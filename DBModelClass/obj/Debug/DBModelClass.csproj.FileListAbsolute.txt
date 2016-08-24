@@ -1,0 +1,8 @@
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.csprojResolveAssemblyReference.cache
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.CultureVMResource.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.POEntityResources.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.CultureVMResource.zh-TW.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.CultureVMResource.en-US.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.POEntityResources.en-US.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.App_GlobalResources.POEntityResources.zh-TW.resources
+D:\VS.net\WebSolution\DBModelClass\obj\Debug\DBModelClass.csproj.GenerateResource.Cache

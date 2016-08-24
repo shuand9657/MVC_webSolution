@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="Username" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Password" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Role" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="FirstName" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="LastName" MaxLength="30" Type="nvarchar" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="DepartID" Nullable="false" Type="int" />
+    <Property Name="CreateDate" Nullable="false" Type="datetime" />
+    <Property Name="Memo" MaxLength="50" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartID" />
+    </Key>
+    <Property Name="DepartID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="DepartName" Nullable="false" MaxLength="100" Type="nvarchar" />
+    <Property Name="DepartSN" Nullable="false" MaxLength="20" Type="nvarchar" />
+    <Property Name="DepartCode" MaxLength="10" Type="nvarchar" />
+    <Property Name="Memo" MaxLength="50" Type="nchar" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="GenderName" Nullable="false" MaxLength="7" Type="nchar" />
+  </EntityType>
+  <EntityType Name="OrgMaster">
+    <Key>
+      <PropertyRef Name="MasterID" />
+    </Key>
+    <Property Name="MasterID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="OrgSN" Nullable="false" MaxLength="20" Type="nvarchar" />
+    <Property Name="OrgName" Nullable="false" MaxLength="100" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="PartsMaster">
+    <Key>
+      <PropertyRef Name="PartsID" />
+    </Key>
+    <Property Name="PartsID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="PartsCode" MaxLength="50" Type="nvarchar" />
+    <Property Name="PartsName" MaxLength="100" Type="nvarchar" />
+    <Property Name="BrandPartsCode" MaxLength="50" Type="nvarchar" />
+    <Property Name="BrandPartsName" MaxLength="100" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="PODetail">
+    <Key>
+      <PropertyRef Name="PODetailID" />
+    </Key>
+    <Property Name="PODetailID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="POID" Nullable="false" Type="int" />
+    <Property Name="PartsID" Nullable="false" Type="int" />
+    <Property Name="Qty" Nullable="false" Type="int" />
+    <Property Name="SalePrice" Type="money" />
+    <Property Name="OrderPrice" Type="money" />
+    <Property Name="Memo" MaxLength="50" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="POEntity">
+    <Key>
+      <PropertyRef Name="POID" />
+    </Key>
+    <Property Name="POID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="PONo" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="ProjectID" Nullable="false" Type="int" />
+    <Property Name="SupplierID" Nullable="false" Type="int" />
+    <Property Name="UserID" Nullable="false" Type="int" />
+    <Property Name="CreateDate" Nullable="false" Type="datetime" />
+    <Property Name="UpdateDate" Nullable="false" Type="datetime" />
+    <Property Name="TranDate" Type="datetime" />
+    <Property Name="Memo" MaxLength="100" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="ProjectName" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="memo" MaxLength="30" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="ProjectOrg">
+    <Key>
+      <PropertyRef Name="ProjectOrgID" />
+    </Key>
+    <Property Name="ProjectOrgID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="ProjectID" Nullable="false" Type="int" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="Username" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Password" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Role" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="FirstName" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="LastName" MaxLength="30" Type="nvarchar" />
+    <Property Name="Gender" Type="int" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="DepartID" Nullable="false" Type="int" />
+    <Property Name="CreateDate" Nullable="false" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="Memo" MaxLength="100" Type="nvarchar" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBModel.dbo.PODetail_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PODetail_View">
+    <Key>
+      <PropertyRef Name="PODetailID" />
+      <PropertyRef Name="POID" />
+      <PropertyRef Name="PartsID" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="SalePrice" />
+      <PropertyRef Name="OrderPrice" />
+      <PropertyRef Name="PONo" />
+    </Key>
+    <Property Name="PODetailID" Nullable="false" Type="int" />
+    <Property Name="POID" Nullable="false" Type="int" />
+    <Property Name="PartsID" Nullable="false" Type="int" />
+    <Property Name="Qty" Nullable="false" Type="int" />
+    <Property Name="SalePrice" Nullable="false" Type="money" />
+    <Property Name="OrderPrice" Nullable="false" Type="money" />
+    <Property Name="Memo" MaxLength="50" Type="nvarchar" />
+    <Property Name="PartsCode" MaxLength="50" Type="nvarchar" />
+    <Property Name="PartsName" MaxLength="100" Type="nvarchar" />
+    <Property Name="BrandPartsCode" MaxLength="50" Type="nvarchar" />
+    <Property Name="BrandPartsName" MaxLength="100" Type="nvarchar" />
+    <Property Name="PONo" Nullable="false" MaxLength="30" Type="nvarchar" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBModel.dbo.POEntity_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="POEntity_View">
+    <Key>
+      <PropertyRef Name="POID" />
+      <PropertyRef Name="PONo" />
+      <PropertyRef Name="SupplierID" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="UpdateDate" />
+      <PropertyRef Name="MasterID" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="CreaterID" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="POID" Nullable="false" Type="int" />
+    <Property Name="PONo" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="SupplierID" Nullable="false" Type="int" />
+    <Property Name="CreateDate" Nullable="false" Type="datetime" />
+    <Property Name="UpdateDate" Nullable="false" Type="datetime" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="ProjectID" Nullable="false" Type="int" />
+    <Property Name="MasterOrgSN" MaxLength="20" Type="nvarchar" />
+    <Property Name="CreaterID" Nullable="false" Type="int" />
+    <Property Name="Username" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="SupplierOrgSN" MaxLength="20" Type="nvarchar" />
+    <Property Name="ProjectName" MaxLength="30" Type="nvarchar" />
+    <Property Name="UserID" Nullable="false" Type="int" />
+    <Property Name="Memo" MaxLength="100" Type="nvarchar" />
+    <Property Name="TranDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBModel.dbo.ProjectOrg_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectOrg_View">
+    <Key>
+      <PropertyRef Name="ProjectOrgID" />
+      <PropertyRef Name="MasterID" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="ProjectName" />
+    </Key>
+    <Property Name="ProjectOrgID" Nullable="false" Type="int" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="OrgSN" MaxLength="20" Type="nchar" />
+    <Property Name="ProjectID" Nullable="false" Type="int" />
+    <Property Name="ProjectName" Nullable="false" MaxLength="30" Type="nchar" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBModel.dbo.UserDepartment_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserDepartment_View">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Role" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="MasterID" />
+      <PropertyRef Name="DepartID" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="OrgSN" />
+      <PropertyRef Name="OrgName" />
+      <PropertyRef Name="DepartName" />
+      <PropertyRef Name="DepartSN" />
+      <PropertyRef Name="GenderName" />
+    </Key>
+    <Property Name="UserID" Nullable="false" Type="int" />
+    <Property Name="Username" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Role" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="FirstName" Nullable="false" MaxLength="30" Type="nvarchar" />
+    <Property Name="LastName" MaxLength="30" Type="nvarchar" />
+    <Property Name="MasterID" Nullable="false" Type="int" />
+    <Property Name="DepartID" Nullable="false" Type="int" />
+    <Property Name="CreateDate" Nullable="false" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="Memo" MaxLength="100" Type="nvarchar" />
+    <Property Name="OrgSN" Nullable="false" MaxLength="20" Type="nvarchar" />
+    <Property Name="OrgName" Nullable="false" MaxLength="100" Type="nvarchar" />
+    <Property Name="DepartName" Nullable="false" MaxLength="100" Type="nvarchar" />
+    <Property Name="DepartSN" Nullable="false" MaxLength="20" Type="nvarchar" />
+    <Property Name="DepartCode" MaxLength="10" Type="nvarchar" />
+    <Property Name="Gender" Type="int" />
+    <Property Name="GenderName" Nullable="false" MaxLength="7" Type="nchar" />
+  </EntityType>
+  <Association Name="FK_Account_Account">
+    <End Type="Self.Account" Multiplicity="1" Role="Account" />
+    <End Type="Self.Account" Multiplicity="0..1" Role="Account1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Account1">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EFDBModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrgMaster" EntityType="Self.OrgMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartsMaster" EntityType="Self.PartsMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PODetail" EntityType="Self.PODetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POEntity" EntityType="Self.POEntity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectOrg" EntityType="Self.ProjectOrg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PODetail_View" EntityType="Self.PODetail_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PODetail_View].[PODetailID] AS [PODetailID], 
+    [PODetail_View].[POID] AS [POID], 
+    [PODetail_View].[PartsID] AS [PartsID], 
+    [PODetail_View].[Qty] AS [Qty], 
+    [PODetail_View].[SalePrice] AS [SalePrice], 
+    [PODetail_View].[OrderPrice] AS [OrderPrice], 
+    [PODetail_View].[Memo] AS [Memo], 
+    [PODetail_View].[PartsCode] AS [PartsCode], 
+    [PODetail_View].[PartsName] AS [PartsName], 
+    [PODetail_View].[BrandPartsCode] AS [BrandPartsCode], 
+    [PODetail_View].[BrandPartsName] AS [BrandPartsName], 
+    [PODetail_View].[PONo] AS [PONo]
+    FROM [dbo].[PODetail_View] AS [PODetail_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="POEntity_View" EntityType="Self.POEntity_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [POEntity_View].[POID] AS [POID], 
+    [POEntity_View].[PONo] AS [PONo], 
+    [POEntity_View].[SupplierID] AS [SupplierID], 
+    [POEntity_View].[CreateDate] AS [CreateDate], 
+    [POEntity_View].[UpdateDate] AS [UpdateDate], 
+    [POEntity_View].[MasterID] AS [MasterID], 
+    [POEntity_View].[ProjectID] AS [ProjectID], 
+    [POEntity_View].[MasterOrgSN] AS [MasterOrgSN], 
+    [POEntity_View].[CreaterID] AS [CreaterID], 
+    [POEntity_View].[Username] AS [Username], 
+    [POEntity_View].[SupplierOrgSN] AS [SupplierOrgSN], 
+    [POEntity_View].[ProjectName] AS [ProjectName], 
+    [POEntity_View].[UserID] AS [UserID], 
+    [POEntity_View].[Memo] AS [Memo], 
+    [POEntity_View].[TranDate] AS [TranDate]
+    FROM [dbo].[POEntity_View] AS [POEntity_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectOrg_View" EntityType="Self.ProjectOrg_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectOrg_View].[ProjectOrgID] AS [ProjectOrgID], 
+    [ProjectOrg_View].[MasterID] AS [MasterID], 
+    [ProjectOrg_View].[OrgSN] AS [OrgSN], 
+    [ProjectOrg_View].[ProjectID] AS [ProjectID], 
+    [ProjectOrg_View].[ProjectName] AS [ProjectName]
+    FROM [dbo].[ProjectOrg_View] AS [ProjectOrg_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserDepartment_View" EntityType="Self.UserDepartment_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserDepartment_View].[UserID] AS [UserID], 
+    [UserDepartment_View].[Username] AS [Username], 
+    [UserDepartment_View].[Role] AS [Role], 
+    [UserDepartment_View].[FirstName] AS [FirstName], 
+    [UserDepartment_View].[LastName] AS [LastName], 
+    [UserDepartment_View].[MasterID] AS [MasterID], 
+    [UserDepartment_View].[DepartID] AS [DepartID], 
+    [UserDepartment_View].[CreateDate] AS [CreateDate], 
+    [UserDepartment_View].[LastUpdateDate] AS [LastUpdateDate], 
+    [UserDepartment_View].[Memo] AS [Memo], 
+    [UserDepartment_View].[OrgSN] AS [OrgSN], 
+    [UserDepartment_View].[OrgName] AS [OrgName], 
+    [UserDepartment_View].[DepartName] AS [DepartName], 
+    [UserDepartment_View].[DepartSN] AS [DepartSN], 
+    [UserDepartment_View].[DepartCode] AS [DepartCode], 
+    [UserDepartment_View].[Gender] AS [Gender], 
+    [UserDepartment_View].[GenderName] AS [GenderName]
+    FROM [dbo].[UserDepartment_View] AS [UserDepartment_View]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Account_Account" Association="Self.FK_Account_Account">
+      <End EntitySet="Account" Role="Account" />
+      <End EntitySet="Account" Role="Account1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
